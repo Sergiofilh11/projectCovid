@@ -1,57 +1,109 @@
 <template>
-  <div class="home">
-    <div>
-      <img class="logo" src="../assets/logo-unime-p.png" alt="Unime logo" />
-    </div>
-    <div>
-      <label for="buscador"><h3>Buscar pelo Estado(UF)</h3></label><br />
+  <v-container fluid>
+    <div class="home">
+      <div>
+        <img class="logo" src="../assets/logo-unime-p.png" alt="Unime logo" />
+      </div>
+      
+      <div>
+        <label for="buscador"><h3>Buscar pelo Estado(UF)</h3></label><br />
+        <v-row align="center">
+          <v-col cols="4">
+            <v-select 
+              id="select"
+              :items="estados"
+              item-text="state"
+              label="Estado"      
+              >
+            </v-select>
+          </v-col>
+        </v-row>
+      </div>
+      
+      <div id="dados">
+        <label><h3>Numero de casos confirmados</h3></label>
+        <v-row align="center">
+          <v-col cols="4" class="select">
+            <v-input > {{ cases }}
+            </v-input>
+          </v-col>
+        </v-row>
+      </div>
 
-      <v-select 
-        v-model="select"
-        :hint="`${estado.state}`"
-        :items="estado.state"
-        label="Estado"      
-        dense>
-        <!-- <option v-for="estado of estados" :key="estado.uid">
-          {{ estado.state }}
-        </option> -->
-      </v-select>
+      <div id="dados">
+        <label><h3>Numero de casos suspeitos</h3></label>
+        <v-row align="center">
+          <v-col cols="4" class="select">
+            <v-select 
+              :items="estados"
+              item-text="suspects"     
+              >
+            </v-select>
+          </v-col>
+        </v-row>
+      </div>
 
-    </div>
-    <div id="dados">
-      <strong>Numero de casos confirmados</strong>
-    </div>
+      <div id="dados">
+        <label><h3>Numero de óbitos</h3></label>
+        <v-row align="center">
+          <v-col cols="4" class="select">
+            <v-select 
+              :items="estados"
+              item-text="deaths"     
+              >
+            </v-select>
+          </v-col>
+        </v-row>
+      </div>
 
-    <div class="status">
-      <img src="../assets/status-covid.png" alt="Status Covid" />
+      <div id="dados">
+        <label><h3>Casos rejeitados</h3></label>
+        <v-row align="center">
+          <v-col cols="4" class="select">
+            <v-select 
+              :items="estados"
+              item-text="refuses"     
+              >
+            </v-select>
+          </v-col>
+        </v-row>
+      </div>
+  
+      <div class="status">
+        <img src="../assets/status-covid.png" alt="Status Covid" />
+      </div>
     </div>
-  </div>
+  </v-container>
 </template>
 <script>
 export default {
   data() {
     return {
       estados: [],
+      cases: ""
     };
   },
   mounted() {
     this.buscarDados();
   },
+  watch: {
+    findCases() {
+      const find = document.querySelector("#select")
+      this.cases = find
+    }
+  },
+
   methods: {
     async buscarDados() {
       const endpoint = "https://covid19-brazil-api.vercel.app/api/report/v1";
-      //   const estadoSelect = document.querySelector('#buscador')
 
       await fetch(endpoint)
         .then((response) => response.json())
         .then((json) => {
           this.estados = json.data;
-          // estadoSelect.innerHTML = ""
-
-          // this.estados.forEach (estado => {
-          //     estadoSelect.innerHTML += `<option value="${estado.uf}">${estado.state}</option>`
         });
     },
+
   },
 };
 </script>
@@ -65,8 +117,8 @@ export default {
   margin-top: 30px;
   margin-bottom: 30px;
 }
-.container {
-  text-align: center;
+label {
+  color: red
 }
 
 </style>
