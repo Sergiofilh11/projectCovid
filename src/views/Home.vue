@@ -24,47 +24,37 @@
         <label><h3>Numero de casos confirmados</h3></label>
         <v-row align="center">
           <v-col cols="4" class="select">
-            <v-input > {{ cases }}
+            <v-input > {{ this.estados[0].cases }}
+            </v-input>
+          </v-col>
+        </v-row>
+      </div>
+                                                              
+       <div id="dados">
+        <label><h3>Numero de casos suspeitos</h3></label>
+        <v-row align="center">
+          <v-col cols="4" class="select">
+            <v-input > {{ this.estados[0].suspects }}
+            </v-input>
+          </v-col>
+        </v-row>
+      </div>
+      <div id="dados">
+        <label><h3>Numero de óbitos</h3></label>
+        <v-row align="center">
+          <v-col cols="4" class="select">
+            <v-input > {{ this.estados[0].deaths }}
             </v-input>
           </v-col>
         </v-row>
       </div>
 
-      <div id="dados">
-        <label><h3>Numero de casos suspeitos</h3></label>
-        <v-row align="center">
-          <v-col cols="4" class="select">
-            <v-select 
-              :items="estados"
-              item-text="suspects"     
-              >
-            </v-select>
-          </v-col>
-        </v-row>
-      </div>
-
-      <div id="dados">
-        <label><h3>Numero de óbitos</h3></label>
-        <v-row align="center">
-          <v-col cols="4" class="select">
-            <v-select 
-              :items="estados"
-              item-text="deaths"     
-              >
-            </v-select>
-          </v-col>
-        </v-row>
-      </div>
-
-      <div id="dados">
+       <div id="dados">
         <label><h3>Casos rejeitados</h3></label>
         <v-row align="center">
           <v-col cols="4" class="select">
-            <v-select 
-              :items="estados"
-              item-text="refuses"     
-              >
-            </v-select>
+            <v-input > {{ this.estados[0].refuses }}
+            </v-input>
           </v-col>
         </v-row>
       </div>
@@ -85,12 +75,10 @@ export default {
   },
   mounted() {
     this.buscarDados();
+    this.findCases();
   },
   watch: {
-    findCases() {
-      const find = document.querySelector("#select")
-      this.cases = find
-    }
+   
   },
 
   methods: {
@@ -103,7 +91,15 @@ export default {
           this.estados = json.data;
         });
     },
+     findCases() {
+      const find = document.querySelector("#select").value
+      this.cases = find
+      this.estados.forEach(element => {
+        console.log(element.cases)
+      });
+    }
 
+  
   },
 };
 </script>
