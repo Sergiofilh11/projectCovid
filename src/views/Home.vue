@@ -1,15 +1,25 @@
 <template>
   <div class="home">
+
     <div>
-      <img src="../assets/logo-unime-p.png" alt="Unime logo">
+      <img class="logo" src="../assets/logo-unime-p.png" alt="Unime logo">
     </div>
     <div>
-      <label for="buscador"><strong>Buscar pelo Estado(UF)</strong></label><br>
-      <select name="buscador" id="buscador">
+        <label for="buscador"><strong>Buscar pelo Estado(UF)</strong></label><br>
+
+        <select name="buscador" id="buscador">
         <option v-for="estado of estados" :key="estado.uid">{{ estado.state }}</option>
         </select>
-      <!-- <button @click="buscarDados">Carregar Estados</button> -->
-      
+
+    </div>
+    <div id="dados">
+        <strong>Numero de casos (Confirmados)</strong>
+        <input type="text-area" disabled value="">
+        <input type="text-area" disabled value="">
+    </div>
+
+    <div class="status">
+        <img src="../assets/status-covid.png" alt="Status Covid">
     </div>
   </div>
 </template>
@@ -44,3 +54,17 @@ export default {
   }
 
 </script>
+
+<style>
+    .logo {
+        width: 200px;
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+    #buscador {
+        margin-top: 10px;
+    }
+    .status {
+        margin-top: 30px;
+    }
+</style>
