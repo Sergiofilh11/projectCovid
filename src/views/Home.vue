@@ -15,7 +15,7 @@
     <div id="dados">
         <strong>Numero de casos (Confirmados)</strong>
         <input type="text-area" disabled value="">
-        <input type="text-area" disabled value="">
+        <input type="text-area" disabled value="" id="teste">
     </div>
 
     <div class="status">
