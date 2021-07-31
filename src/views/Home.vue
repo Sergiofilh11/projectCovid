@@ -1,13 +1,12 @@
 <template>
-  <v-container fluid>
+  <v-container>
     <div class="home">
       <div>
         <img class="logo" src="../assets/logo-unime-p.png" alt="Unime logo" />
       </div>
-
       <div>
         <label for="buscador"><h3>Buscar pelo Estado(UF)</h3></label><br />
-        <v-row align="center">
+        <v-row>
           <v-col cols="4">
             <v-select
               id="select"
@@ -114,16 +113,30 @@ export default {
 };
 </script>
 
-<style>
+<style scope>
+
 .home {
   text-align: center;
+  margin-left: 25%;
+  border: solid rgb(214, 214, 214);
+  border-radius: 20px;
 }
 .logo {
   width: 200px;
   margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 label {
   color: red;
+  margin-bottom: 30px;
 }
+
+
+
+.home {
+  width: 600px;
+  padding: 30px;
+  background: rgb(245, 244, 244);
+}
+
 </style>
