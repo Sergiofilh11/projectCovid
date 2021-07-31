@@ -1,13 +1,13 @@
 <template>
   <v-container>
     <div class="home">
-      <div>
+      <div class="imagem">
         <img class="logo" src="../assets/logo-unime-p.png" alt="Unime logo" />
       </div>
-      <div>
-        <label for="buscador"><h3>Buscar pelo Estado(UF)</h3></label><br />
+      <div class="select">
+        <label for="select"><h3>Buscar pelo Estado(UF)</h3></label><br />
         <v-row>
-          <v-col cols="4">
+          <v-col cols="6">
             <v-select
               id="select"
               :items="estados"
@@ -21,43 +21,43 @@
         </v-row>
       </div>
 
-      <div id="cases">
+      <div>
         <label><h3>Numero de casos confirmados</h3></label>
-        <v-row align="center">
-          <v-col cols="4">
+        <v-row>
+          <v-col cols="6">
             <v-input> {{ this.cases }} </v-input>
           </v-col>
         </v-row>
       </div>
       <div id="dados">
         <label><h3>Numero de casos suspeitos</h3></label>
-        <v-row align="center">
-          <v-col cols="4">
+        <v-row>
+          <v-col cols="6" class="susp">
             <v-input> {{ this.suspects }} </v-input>
           </v-col>
         </v-row>
       </div>
-      <div id="dados">
+      <div>
         <label><h3>Numero de óbitos</h3></label>
-        <v-row align="center">
-          <v-col cols="4">
+        <v-row class="dados">
+          <v-col cols="6">
             <v-input> {{ this.deaths }} </v-input>
           </v-col>
         </v-row>
       </div>
 
-      <div id="dados">
+      <div                                                  >
         <label><h3>Casos rejeitados</h3></label>
-        <v-row align="center">
-          <v-col cols="4">
+        <v-row>
+          <v-col cols="6">
             <v-input> {{ this.refuses }} </v-input>
           </v-col>
         </v-row>
       </div>
-      <div id="dados">
+      <div class="dados">
         <label><h3>Atualização</h3></label>
-        <v-row align="center">
-          <v-col cols="4">
+        <v-row>
+          <v-col cols="6">
             <v-input> {{ this.datetime }} </v-input>
           </v-col>
         </v-row>
@@ -130,7 +130,9 @@ export default {
 <style scope>
 
 .home {
-  text-align: center;
+  width: 600px;
+  background: rgb(245, 244, 244);
+  padding-left: 200px;
   margin-left: 25%;
   border: solid rgb(214, 214, 214);
   border-radius: 20px;
@@ -140,17 +142,11 @@ export default {
   margin-top: 30px;
   margin-bottom: 50px;
 }
+
 label {
   color: red;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
-
-
-.home {
-  width: 600px;
-  padding: 30px;
-  background: rgb(245, 244, 244);
-}
 
 </style>
