@@ -4,61 +4,58 @@
       <div>
         <img class="logo" src="../assets/logo-unime-p.png" alt="Unime logo" />
       </div>
-      
+
       <div>
         <label for="buscador"><h3>Buscar pelo Estado(UF)</h3></label><br />
         <v-row align="center">
           <v-col cols="4">
-            <v-select 
+            <v-select
               id="select"
               :items="estados"
               item-text="state"
-              label="Estado"      
-              >
+              label="Estados"
+              selected
+              @change="estado($event)"
+            >
             </v-select>
           </v-col>
         </v-row>
       </div>
-      
-      <div id="dados">
+
+      <div id="cases">
         <label><h3>Numero de casos confirmados</h3></label>
         <v-row align="center">
-          <v-col cols="4" class="select">
-            <v-input > {{ this.estados[0].cases }}
-            </v-input>
+          <v-col cols="4">
+            <v-input> {{ this.estados[0].cases }} </v-input>
           </v-col>
         </v-row>
       </div>
-                                                              
-       <div id="dados">
+
+      <div id="dados">
         <label><h3>Numero de casos suspeitos</h3></label>
         <v-row align="center">
-          <v-col cols="4" class="select">
-            <v-input > {{ this.estados[0].suspects }}
-            </v-input>
+          <v-col cols="4">
+            <v-input> {{ this.estados[0].suspects }} </v-input>
           </v-col>
         </v-row>
       </div>
       <div id="dados">
         <label><h3>Numero de óbitos</h3></label>
         <v-row align="center">
-          <v-col cols="4" class="select">
-            <v-input > {{ this.estados[0].deaths }}
-            </v-input>
+          <v-col cols="4">
+            <v-input> {{ this.estados[0].deaths }} </v-input>
           </v-col>
         </v-row>
       </div>
 
-       <div id="dados">
+      <div id="dados">
         <label><h3>Casos rejeitados</h3></label>
         <v-row align="center">
-          <v-col cols="4" class="select">
-            <v-input > {{ this.estados[0].refuses }}
-            </v-input>
+          <v-col cols="4">
+            <v-input> {{ this.estados[0].refuses }} </v-input>
           </v-col>
         </v-row>
       </div>
-  
       <div class="status">
         <img src="../assets/status-covid.png" alt="Status Covid" />
       </div>
@@ -70,16 +67,16 @@ export default {
   data() {
     return {
       estados: [],
-      cases: ""
+      cases: null,
+      state: null,
     };
   },
   mounted() {
     this.buscarDados();
-    this.findCases();
+
+    // this.findCases();
   },
-  watch: {
-   
-  },
+  watch: {},
 
   methods: {
     async buscarDados() {
@@ -89,17 +86,23 @@ export default {
         .then((response) => response.json())
         .then((json) => {
           this.estados = json.data;
+
+          // console.log(json.data)
         });
     },
-     findCases() {
-      const find = document.querySelector("#select").value
-      this.cases = find
-      this.estados.forEach(element => {
-        console.log(element.cases)
-      });
-    }
+    async estado(e) {
+      for (let i = 0; i < this.estados.length; i++) {
+        if (this.estados[i].state) {
+         this.cases = this.estados[i].cases;
+        }
+    
+            if (e) {
+        
+             console.log(e);
+        }
+      }
+    },
 
-  
   },
 };
 </script>
@@ -114,7 +117,6 @@ export default {
   margin-bottom: 30px;
 }
 label {
-  color: red
+  color: red;
 }
-
 </style>
