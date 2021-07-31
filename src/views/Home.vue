@@ -14,7 +14,7 @@
               :items="estados"
               item-text="state"
               label="Estados"
-              selected
+              clearable
               @change="estado($event)"
             >
             </v-select>
@@ -26,7 +26,7 @@
         <label><h3>Numero de casos confirmados</h3></label>
         <v-row align="center">
           <v-col cols="4">
-            <v-input> {{ this.estados[0].cases }} </v-input>
+            <v-input> {{ this.cases }} </v-input>
           </v-col>
         </v-row>
       </div>
@@ -35,7 +35,7 @@
         <label><h3>Numero de casos suspeitos</h3></label>
         <v-row align="center">
           <v-col cols="4">
-            <v-input> {{ this.estados[0].suspects }} </v-input>
+            <v-input> {{ this.suspects }} </v-input>
           </v-col>
         </v-row>
       </div>
@@ -43,7 +43,7 @@
         <label><h3>Numero de óbitos</h3></label>
         <v-row align="center">
           <v-col cols="4">
-            <v-input> {{ this.estados[0].deaths }} </v-input>
+            <v-input> {{ this.deaths }} </v-input>
           </v-col>
         </v-row>
       </div>
@@ -52,7 +52,7 @@
         <label><h3>Casos rejeitados</h3></label>
         <v-row align="center">
           <v-col cols="4">
-            <v-input> {{ this.estados[0].refuses }} </v-input>
+            <v-input> {{ this.refuses }} </v-input>
           </v-col>
         </v-row>
       </div>
@@ -69,6 +69,11 @@ export default {
       estados: [],
       cases: null,
       state: null,
+      deaths: null,
+      refuses: null,
+      suspects: null,
+      datetime: null,
+
     };
   },
   mounted() {
@@ -86,19 +91,15 @@ export default {
         .then((response) => response.json())
         .then((json) => {
           this.estados = json.data;
-
-          // console.log(json.data)
         });
     },
     async estado(e) {
       for (let i = 0; i < this.estados.length; i++) {
-        if (this.estados[i].state) {
-         this.cases = this.estados[i].cases;
-        }
-    
-            if (e) {
-        
-             console.log(e);
+        if (this.estados[i].state == e) {
+          this.cases = this.estados[i].cases;
+          this.deaths = this.estados[i].deaths;
+          this.refuses = this.estados[i].refuses;
+          this.suspects = this.estados[i].suspects;
         }
       }
     },
