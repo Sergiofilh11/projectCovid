@@ -55,6 +55,14 @@
           </v-col>
         </v-row>
       </div>
+      <div id="dados">
+        <label><h3>Atualização</h3></label>
+        <v-row align="center">
+          <v-col cols="4">
+            <v-input> {{ this.datetime }} </v-input>
+          </v-col>
+        </v-row>
+      </div>
       <div class="status">
         <img src="../assets/status-covid.png" alt="Status Covid" />
       </div>
@@ -72,6 +80,7 @@ export default {
       refuses: null,
       suspects: null,
       datetime: null,
+      convertDatetime: null,
 
     };
   },
@@ -98,6 +107,7 @@ export default {
           this.deaths = null;
           this.refuses = null;
           this.suspects = null;
+          this.datetime = null;
       }
       for (let i = 0; i < this.estados.length; i++) {
         if (this.estados[i].state == e) {
@@ -105,6 +115,8 @@ export default {
           this.deaths = this.estados[i].deaths;
           this.refuses = this.estados[i].refuses;
           this.suspects = this.estados[i].suspects;
+          this.convertDatetime = this.estados[i].datetime;
+          this.datetime = new Date(this.convertDatetime);
         }
       }
     },
