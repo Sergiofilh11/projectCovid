@@ -29,7 +29,6 @@
           </v-col>
         </v-row>
       </div>
-
       <div id="dados">
         <label><h3>Numero de casos suspeitos</h3></label>
         <v-row align="center">
@@ -64,7 +63,7 @@
         </v-row>
       </div>
       <div class="status">
-        <img src="../assets/status-covid.png" alt="Status Covid" />
+        <img v-if="status" src="../assets/status-covid.png" alt="Status Covid" />
       </div>
     </div>
   </v-container>
@@ -81,6 +80,7 @@ export default {
       suspects: null,
       datetime: null,
       convertDatetime: null,
+      status: true
 
     };
   },
@@ -102,12 +102,14 @@ export default {
         });
     },
     async estado(e) {
+      this.status = false
       if(e === null){
         this.cases = null;
           this.deaths = null;
           this.refuses = null;
           this.suspects = null;
           this.datetime = null;
+          this.status = true
       }
       for (let i = 0; i < this.estados.length; i++) {
         if (this.estados[i].state == e) {
