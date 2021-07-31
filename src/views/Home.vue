@@ -94,6 +94,12 @@ export default {
         });
     },
     async estado(e) {
+      if(e === null){
+        this.cases = null;
+          this.deaths = null;
+          this.refuses = null;
+          this.suspects = null;
+      }
       for (let i = 0; i < this.estados.length; i++) {
         if (this.estados[i].state == e) {
           this.cases = this.estados[i].cases;
