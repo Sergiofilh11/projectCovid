@@ -1,6 +1,6 @@
 # Dados Covid
 
-Aplicação que mostra os dados de covid por região no Brasil.
+Aplicação que mostra os dados de covid por estado do Brasil.
 
 ## Project setup
 ```
