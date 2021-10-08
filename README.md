@@ -1,6 +1,8 @@
-# Dados Covid
+# Project name
 
-Aplicação que mostra os dados de covid por estado do Brasil.
+<h1 align="center">Dados Covid</h1>
+
+<p align="center">😷Application that shows covid data by state of Brazil</p>
 
 ## Project setup
 ```
