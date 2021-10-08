@@ -1,4 +1,6 @@
-# dados_covid
+# Dados Covid
+
+Aplicação que mostra os dados de covid por região no Brasil.
 
 ## Project setup
 ```
