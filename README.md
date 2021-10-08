@@ -1,6 +1,6 @@
 <h1 align="center">Dados Covid </h1>
 
-<p align="center"😷Application that shows covid data by state of Brazil</p>
+<p align="center">😷Application that shows covid data by state of Brazil</p>
 
 ## Project setup
 ```
