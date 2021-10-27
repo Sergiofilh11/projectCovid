@@ -46,7 +46,7 @@
         </v-row>
       </div>
 
-      <div                                                  >
+      <div>
         <label><h3>Casos rejeitados</h3></label>
         <v-row>
           <v-col cols="6">
