@@ -7,7 +7,7 @@
       <div class="select">
         <label for="select"><h3>Buscar pelo Estado(UF)</h3></label><br />
         <v-row>
-          <v-col cols="6">
+          <v-col cols="6" class="seletor">
             <v-select
               id="select"
               :items="estados"
@@ -87,7 +87,6 @@ export default {
   mounted() {
     this.buscarDados();
 
-    // this.findCases();
   },
   watch: {},
 
@@ -132,7 +131,6 @@ export default {
 .home {
   width: 600px;
   background: rgb(245, 244, 244);
-  padding-left: 200px;
   margin-left: 25%;
   border: solid rgb(214, 214, 214);
   border-radius: 20px;
@@ -141,12 +139,22 @@ export default {
   width: 200px;
   margin-top: 30px;
   margin-bottom: 50px;
+  margin-left: 200px;
+}
+.status {
+  margin-left: 115px;
+}
+.seletor {
+  margin-left: 170px;
+}
+
+h3 {
+  margin-left: 200px;
 }
 
 label {
   color: red;
   margin-bottom: 50px;
 }
-
 
 </style>
